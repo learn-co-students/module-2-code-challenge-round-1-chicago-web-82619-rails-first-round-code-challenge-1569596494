@@ -1,0 +1,30 @@
+<%= link_to "Back to Heroines", heroines_path %>
+<br>
+
+<% if flash[:error] %>
+
+    <h4>Errors</h4>
+
+    <% flash[:error].each do |error| %>
+        <p><%= error %></p>
+    <% end %>
+
+<% end %>
+
+<%= form_with model: @heroine do |f| %>
+
+    <%= f.label "Name" %>
+    <br>
+    <%= f.text_field :name %>
+    <br>
+
+    <%= f.label "Super Name" %>
+    <br>
+    <%= f.text_field :super_name %>
+    <br>
+
+    <%= f.collection_select :power_id, Power.all, :id, :name %>
+
+    <%= f.submit "Create Heroine" %>
+
+<% end %>
