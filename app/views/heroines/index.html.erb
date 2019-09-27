@@ -1,8 +1,11 @@
 <p><%= link_to "Home", "/" %><p>
-<%= link_to '<button type="button">New Heroine</button>'.html_safe, new_heroine_path %>
+<%= link_to '<button type="button"><h4>New Heroine</h4></button>'.html_safe, new_heroine_path %>
 
 <h2>All Heroines</h2>
-
+<%= form_tag(heroines_path, method: :get) do %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag ("Search") %>
+  <% end %>
 <ul>
   <% @heroines.each do |heroine| %>
     <li>
@@ -12,10 +15,5 @@
   <% end %>
 </ul>
 
-<h4>Search by Superpower:</h4>
-<%= form_tag(heroines_path, method: :get) do %>
-<%= text_field_tag(:search, params[:search]) %>
-<%= submit_tag ("Search") %>
-<% end %>
 
 <p><%= link_to '<button type="button">View Superpowers</button>'.html_safe, powers_path %><p>
