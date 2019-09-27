@@ -2,7 +2,16 @@ class HeroinesController < ApplicationController
   before_action :find_heroine, only:[:show, :edit, :update, :destroy]
 
   def index
-    @heroines = Heroine.all
+    if params[:power_name]
+      @power = Power.find_by(name: params[:power_name])
+      @heroines = Heroine.all.select do |heroine|
+        heroine.power == @power
+      end
+      @heroines
+      # raise @heroines.inspect
+    else
+      @heroines = Heroine.all
+    end
   end
 
   def show
