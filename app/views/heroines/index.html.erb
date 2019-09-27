@@ -1,10 +1,23 @@
 <h2>All Heroines</h2>
 
+
+<%= form_with url: '/heroines', method: 'get' do %>
+<h2><%= label_tag :q, "Search by Superpower:"%></h2>
+<%= text_field_tag :q, params[:q] %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @heroines.empty? %>
+<p>No heroines found</p>
+<% end %>
 <ul>
   <% @heroines.each do |heroine| %>
     <li>
-      <%= heroine.super_name %>
+      <%= link_to heroine.super_name, heroine %>
     </li>
     <br>
   <% end %>
 </ul>
+
+<br>
+<h3><%= link_to "Powers", powers_path %> </h3>
