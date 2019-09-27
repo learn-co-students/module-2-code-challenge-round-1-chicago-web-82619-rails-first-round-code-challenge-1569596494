@@ -1,0 +1,18 @@
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+
+<%= form_with model: @heroine do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :super_name %>
+  <%= f.text_field :super_name %>
+  <%= f.label :power %>
+  <%= f.collection_select :power_id, Power.all, :id, :name %>
+  <%= f.submit %>
+<% end %>
+
+
+<%= link_to "heroine index", heroines_path %>
