@@ -17,6 +17,16 @@ class HeroinesController < ApplicationController
     redirect_to @heroine
   end
 
+  def search
+    if params[:power] == ''
+      redirect_to heroines_path
+    else
+      @power = Power.find_by(name: params[:power])
+      @heroines = Heroine.where(power_id: @power.id)
+      render :index
+    end
+  end
+
   private
     # Finds a heroine based on id.
     def find_heroine
