@@ -1,0 +1,11 @@
+<% if flash[:message] %>
+<p style="color: green"> <%=  flash[:message] %> </p>
+<% end %>
+
+<h1> <%= @heroine.super_name %> </h1>
+
+<h2> Government name: <%= @heroine.name%> </h2>
+
+<p>Power: <%= link_to @heroine.power.name, @heroine.power%></p>
+
+<%= link_to "Back", heroines_path %>
