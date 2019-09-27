@@ -16,3 +16,5 @@
     <p><%= f.collection_select(:power_id, Power.all, :id, :name) %></p>
     <%= f.submit %>
 <% end %>
+
+<p><%= link_to '<button type="button">Back</button>'.html_safe, heroines_path %><p>
