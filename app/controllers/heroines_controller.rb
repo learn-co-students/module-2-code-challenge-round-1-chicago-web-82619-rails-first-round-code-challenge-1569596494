@@ -1,6 +1,11 @@
 class HeroinesController < ApplicationController
   def index
+    query = params[:q]
     @heroines = Heroine.all
+    if query
+      @heroines = @heroines.select do |heroine|
+        heroine.power.name.downcase == query.downcase end
+    end
   end
 
   def show
