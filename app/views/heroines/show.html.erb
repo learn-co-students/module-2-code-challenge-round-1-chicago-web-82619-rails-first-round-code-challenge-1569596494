@@ -1,0 +1,6 @@
+<h1><%= @heroine.super_name %></h1>
+
+<h4>Name: <%= @heroine.name %></h4> 
+<h4>Power: <%= link_to @heroine.power.name.capitalize, power_path(@heroine.power.id) %><%=  %> </h4> 
+
+<p><%= link_to '<button type="button">View Heroines</button>'.html_safe, heroines_path %><p>
