@@ -1,0 +1,22 @@
+<h1>Create A New Heroine</h1>
+
+<% if flash[:errors] %>
+    <% flash[:errors].each do |err| %>
+        <p><%= err %></p>
+    <% end %>
+<% end %>
+
+<%= form_with model: @heroine do |f| %>
+    <%= f.label "Heroine Name: " %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label "Super Name: " %>
+    <%= f.text_field :super_name %>
+    <br>
+    <%= f.label "Power: " %>
+    <%= f.collection_select :power_id, Power.all, :id, :name %>
+    <br>
+    <%= f.submit %>
+<% end %>
+<br>
+<%= link_to "Back to all heroines", heroines_path %>
