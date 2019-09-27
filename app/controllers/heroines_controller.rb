@@ -1,11 +1,18 @@
 class HeroinesController < ApplicationController
+
+
   def index
     query = params[:q]
     @heroines = Heroine.all
+
+    #check if query is present
     if query
+      if query.length > 0 # if query is empty, render all heroines
       @heroines = @heroines.select do |heroine|
+        # super power name is case insensitive
         heroine.power.name.downcase == query.downcase end
     end
+  end
   end
 
   def show
