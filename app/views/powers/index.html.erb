@@ -1,12 +1,15 @@
+<p><%= link_to "Home", "/" %><p>
 <h2>All Superpowers</h2>
 
 <ul>
   <% @powers.each do |power| %>
     <li>
-      <%= power.name %>
+      <h3><%= link_to power.name.capitalize, power %> </h3>
       <br>
       Description: <%= power.description %>
     </li>
     <br>
   <% end %>
 </ul>
+
+<p><%= link_to '<button type="button">View Heroines</button>'.html_safe, heroines_path %><p>

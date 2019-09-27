@@ -1,10 +1,20 @@
-<h2>All Heroines</h2>
+<p><%= link_to "Home", "/" %><p>
+<%= link_to '<button type="button"><h4>New Heroine</h4></button>'.html_safe, new_heroine_path %>
 
+<h2>All Heroines</h2>
+Filter by Power:
+<%= form_tag(heroines_path, method: :get) do %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag ("Search") %>
+  <% end %>
 <ul>
   <% @heroines.each do |heroine| %>
     <li>
-      <%= heroine.super_name %>
+      <%= link_to heroine.super_name, heroine %>
     </li>
     <br>
   <% end %>
 </ul>
+
+
+<p><%= link_to '<button type="button">View Superpowers</button>'.html_safe, powers_path %><p>
