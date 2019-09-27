@@ -1,5 +1,11 @@
 <h2>All Heroines</h2>
 
+<h3>Search By Power: </h3>
+<%= form_tag(heroines_path, method: :get) do %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <ul>
   <% @heroines.each do |heroine| %>
     <li>
@@ -10,3 +16,5 @@
 </ul>
 
 <%= link_to "Create new Heroine", new_heroine_path %>
+<br>
+<%= link_to "To All Powers", powers_path %>
